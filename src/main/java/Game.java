@@ -9,11 +9,11 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
 
         // Collect character name from user.
-        System.out.print("Name: ");
+        System.out.print("Specialist's Name (First): ");
         String name = scanner.nextLine();
 
         // Collect character role from user.
-        System.out.print("Role: ");
+        System.out.print("Reported Side Gig: ");
         String role = scanner.nextLine();
 
         System.out.println("Your name is " + name + " and your role is " + role + ".");
