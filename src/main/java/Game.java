@@ -4,23 +4,50 @@ import java.util.concurrent.TimeUnit;
 public class Game {
 
     public static void main(String[] args) {
-
-        // Create Scanner for collecting user input.
+        @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
 
-        // Collect character name from user.
-        System.out.print("Specialist's Name (First): ");
-        String name = scanner.nextLine();
+        System.out.println("Enter name.");
+        String charName = scanner.nextLine();
+        System.out.println("Enter side gig.");
+        String gigName = scanner.nextLine();
+        System.out.println("Enter background.");
+        String bgName = scanner.nextLine();
 
-        // Collect character role from user.
-        System.out.print("Reported Side Gig: ");
-        String sideGig = scanner.nextLine();
+        System.out.println("Character Name: " + charName);
+        System.out.println("Side Gig: " + gigName);
+        System.out.println("Background: " + bgName);
+        StatTool myStats = new StatTool(charName,gigName,bgName);
 
-        System.out.println("Your name is " + name + ", and you are a " + sideGig + ".");
-        
-        // TODO Create character by collecting user input (name + role.
+        myStats.printSheetWithAllowance();
 
-        // TODO Print character sheet.
+        System.out.println("Type the command you'd like to use. You can do '[stat name] [higher/lower]' to increase or decrease the value of that stat by 1 or do 'finish' to finalize your character sheet.");
+        String command = "";
+
+        while (true) {
+            command = scanner.nextLine();
+
+            if (command.equalsIgnoreCase("finish")) {
+                System.out.println("Finalizing character sheet...");
+                myStats.printSheet();
+                break;
+            }
+
+            String commandChunks[] = command.split("\\s+");
+            if (commandChunks.length == 2) {
+                String stat = commandChunks[0].toLowerCase();
+                int value = 0;
+                if (commandChunks[1].equalsIgnoreCase("higher")) value = 1;
+                else if (commandChunks[1].equalsIgnoreCase("lower")) value = -1;
+                else {
+                    System.out.println("ERROR: Use 'higher' or 'lower' after the stat name.");
+                    continue;
+                }
+                myStats.statAdjust(stat, value);
+                myStats.printSheetWithAllowance();
+            } else {
+                System.out.println("Unclear command. Enter '[stat name]' '[higher/lower]' (ex: sharp lower, slick higher) to adjust ratings, or enter 'finish' to finalize your character sheet.");
+            }
 
         // Start the adventure.
         printDramaticText("Our adventure begins in a shady tavern ...");
