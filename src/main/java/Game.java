@@ -48,6 +48,7 @@ public class Game {
             } else {
                 System.out.println("Unclear command. Enter '[stat name]' '[higher/lower]' (ex: sharp lower, slick higher) to adjust ratings, or enter 'finish' to finalize your character sheet.");
             }
+        }
 
         // Start the adventure.
         printDramaticText("Our adventure begins in a shady tavern ...");
