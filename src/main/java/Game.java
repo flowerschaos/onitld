@@ -14,9 +14,9 @@ public class Game {
 
         // Collect character role from user.
         System.out.print("Reported Side Gig: ");
-        String role = scanner.nextLine();
+        String sideGig = scanner.nextLine();
 
-        System.out.println("Your name is " + name + " and your role is " + role + ".");
+        System.out.println("Your name is " + name + ", and you are a " + sideGig + ".");
         
         // TODO Create character by collecting user input (name + role.
 
