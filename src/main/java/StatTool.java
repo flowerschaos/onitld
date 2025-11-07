@@ -4,7 +4,7 @@ public class StatTool {
         public int sturdy = 4;
         public int slick = 4;
         public int severe = 4;
-        public int smart = 4;
+        public int skilled = 4;
         public int soul = 4;
 
         public String name;
@@ -15,9 +15,9 @@ public class StatTool {
 
         //stat value stuff
         public final int parameter_point_max = 24;
-        public int parameter_point_current = sharp+sturdy+slick+severe+smart+soul;
+        public int parameter_point_current = sharp+sturdy+slick+severe+skilled+soul;
         public int totalStatPoints() {
-                return sharp + sturdy + slick + severe + smart + soul;
+                return sharp + sturdy + slick + severe + skilled + soul;
         }
         public int availablePoints() {
                 return parameter_point_max - totalStatPoints();
@@ -37,7 +37,7 @@ public class StatTool {
                 System.out.println("Sturdy // " + this.sturdy);
                 System.out.println("Slick // " + this.slick);
                 System.out.println("Severe // " + this.severe);
-                System.out.println("Smart // " + this.smart);
+                System.out.println("Skilled // " + this.skilled);
                 System.out.println("Soul // " + this.soul);
         }
         public void printSheetWithAllowance(){
@@ -47,7 +47,7 @@ public class StatTool {
                 System.out.println("Sturdy // " + this.sturdy);
                 System.out.println("Slick // " + this.slick);
                 System.out.println("Severe // " + this.severe);
-                System.out.println("Smart // " + this.smart);
+                System.out.println("Skilled // " + this.skilled);
                 System.out.println("Soul // " + this.soul);
                 System.out.println("==========================");
                 System.out.println("Available Points: "+availablePoints());
@@ -61,7 +61,7 @@ public class StatTool {
                         case "sturdy": changeValue = sturdy; break;
                         case "slick": changeValue = slick; break;
                         case "severe": changeValue = severe; break;
-                        case "smart": changeValue = smart; break;
+                        case "skilled": changeValue = skilled; break;
                         case "soul": changeValue = soul; break;
                         default:
                         System.out.println("ERROR: Unknown stat.");
@@ -74,7 +74,7 @@ public class StatTool {
                         return;
                 }
                 //does this go over the allowance?
-                int allowanceCheck = sharp + sturdy + slick + severe + smart + soul - changeValue + newValue;
+                int allowanceCheck = sharp + sturdy + slick + severe + skilled + soul - changeValue + newValue;
                 if (allowanceCheck > 24 || allowanceCheck < 0) {
                         System.out.println("ERROR: Total stat points must be exactly 24. Current total would be " + allowanceCheck);
                         return;
@@ -85,7 +85,7 @@ public class StatTool {
                         case "sturdy": sturdy = newValue; break;
                         case "slick": slick = newValue; break;
                         case "severe": severe = newValue; break;
-                        case "smart": smart = newValue; break;
+                        case "skilled": skilled = newValue; break;
                         case "soul": soul = newValue; break;
                 }
         }
