@@ -89,4 +89,10 @@ public class StatTool {
                         case "soul": soul = newValue; break;
                 }
         }
+        public void diceCheck(String difficulty, String roll_stat){
+                if (difficulty.equals("desolate")){
+                        int roll = (int)(Math.random() * 10) + 1;
+                        
+                }
+        }
 }

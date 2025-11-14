@@ -55,6 +55,7 @@ public class Game {
         printDramaticText("///////////////////////////////////");
         printDramaticText("The endless torrent of snow smothers the crowded street. The only thing clear to see is the holographic advertisements in the distance.");
         printDramaticText("You sit at a street market stall, eating cheap noodles. Needless to say, you desperately need this job. There are a thousand things that could go wrong here, yes, but you're desperate to make rent.");
+        printDramaticText("                                  ");
         printDramaticText("Next to you sits down a man. He's on the taller end, with patchy stubble and wireframe glasses. His eyes are ice blue, and his hair's a murky brown in a very bad mullet.");
         printDramaticText("He looks towards you, and a small smile appears on his face, but his eyes are full of sorrow.");
         printDramaticText("\"Sorry I'm late, "+charName+". The name's Miles, I'm your... client, I guess.\"");
@@ -78,15 +79,6 @@ public class Game {
         }
         System.out.println();
     }
-
-public static void diceCheck(String difficulty, String stat){
-    int roll = (int)(Math.random() * 10) + 1;
-    if (difficulty == "desolate"){
-        for (int i = 0; i < 1; i++){
-            roll;
-        }
-    }
-}
 
     // Draws a monster and returns an int which represents the difficulty of roll required.
     public static int generateMonster() {
