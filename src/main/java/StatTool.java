@@ -89,8 +89,9 @@ public class StatTool {
                         case "soul": soul = newValue; break;
                 }
         }
-        public void diceCheck(String difficulty, String rollStat){
+        public RollResult diceCheck(String rollStat){
                 int checkedStat = 0;
+                boolean checkResult = true;
                 switch(rollStat) {
                         case "sharp": checkedStat = sharp;
                         case "sturdy": checkedStat = sturdy;
@@ -112,5 +113,10 @@ public class StatTool {
                 if (roll3 > checkedStat){
                         failedRolls++;
                 }
+                if (failedRolls >= 2){
+                        checkResult = false;
+                }
+                int[] rolls = new int[]{roll1, roll2, roll3};
+                return new RollResult(failedRolls, rolls, checkResult);
         }
 }
