@@ -89,6 +89,7 @@ public class Game {
         }
         System.out.println();
     }
+    
     public static void encounterRoll(){
         int rng = (int)(Math.random() * 2) + 1;
         System.out.println(rng);
