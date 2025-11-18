@@ -89,10 +89,28 @@ public class StatTool {
                         case "soul": soul = newValue; break;
                 }
         }
-        public void diceCheck(String difficulty, String roll_stat){
-                if (difficulty.equals("desolate")){
-                        int roll = (int)(Math.random() * 10) + 1;
-                        
+        public void diceCheck(String difficulty, String rollStat){
+                int checkedStat = 0;
+                switch(rollStat) {
+                        case "sharp": checkedStat = sharp;
+                        case "sturdy": checkedStat = sturdy;
+                        case "slick": checkedStat = slick;
+                        case "severe": checkedStat = severe;
+                        case "skilled": checkedStat = skilled;
+                        case "soul": checkedStat = soul;
+                }
+                int failedRolls = 0;
+                int roll1 = (int)(Math.random() * 10) + 1;
+                int roll2 = (int)(Math.random() * 10) + 1;
+                int roll3 = (int)(Math.random() * 10) + 1;
+                if (roll1 > checkedStat){
+                        failedRolls++;
+                }
+                if (roll2 > checkedStat){
+                        failedRolls++;
+                }
+                if (roll3 > checkedStat){
+                        failedRolls++;
                 }
         }
 }

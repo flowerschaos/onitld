@@ -80,6 +80,10 @@ public class Game {
         System.out.println();
     }
 
+    public static void diceCheckCatch(){
+        
+    }
+
     // Draws a monster and returns an int which represents the difficulty of roll required.
     public static int generateMonster() {
         int r = (int)(Math.random() * 6) + 1;
