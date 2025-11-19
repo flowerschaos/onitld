@@ -60,16 +60,16 @@ public class Game {
         printDramaticText("He looks towards you, and a small smile appears on his face, but his eyes are full of sorrow.");
         printDramaticText("\"Sorry I'm late, "+charName+". The name's Miles, I'm your... client.\"");
         printDramaticText("\"Here is the tracking device you'll need to find what I'm looking for.\"");
-        printDramaticText("He hands you a small phone-sized device. On it is a dot representing you, outlines of the buildings surrounding you, and an arrow at the top of the screen.")
-        printDramaticText("The arrow has a label: \"2M NORTH\".")
-        printDramaticText("As you rise, Miles waves.")
-        printDramaticText("\"Good luck out there!\"")
+        printDramaticText("He hands you a small phone-sized device. On it is a dot representing you, outlines of the buildings surrounding you, and an arrow at the top of the screen.");
+        printDramaticText("The arrow has a label: \"2M NORTH\".");
+        printDramaticText("As you rise, Miles waves.");
+        printDramaticText("\"Good luck out there!\"");
         printDramaticText("                                  ");
         printDramaticText("You make it to the location... a derelict warehouse?");
         printDramaticText("As you enter, you can feel that something's horribly wrong here...");
         // encounterRoll();
 
-        RollResult rr = myStats.diceCheck(slick);
+        RollResult rr = myStats.diceCheck("slick");
         rr.print();
         // TODO Continue ...
     }
