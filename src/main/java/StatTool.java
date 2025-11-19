@@ -117,6 +117,6 @@ public class StatTool {
                         checkResult = false;
                 }
                 int[] rolls = new int[]{roll1, roll2, roll3};
-                return new RollResult(failedRolls, rolls, checkResult);
+                return new RollResult(rollStat, failedRolls, rolls, checkResult);
         }
 }
