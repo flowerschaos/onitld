@@ -1,13 +1,13 @@
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Game {
+public class Game{
 
     public static void main(String[] args) {
         @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter your name, please.");
+        System.out.println("Enter your first name, please.");
         String charName = scanner.nextLine();
         StatTool myStats = new StatTool(charName);
 
@@ -85,8 +85,10 @@ public class Game {
             if (rr.checkResult){
                 System.out.println("\nDespite the warehouse itself seeming to be against you, you manage to press onward.");
             }
-            System.out.println("\nYou can't see here from there, and you soon find yourself trapped within the maze, another lost soul damned to wander in the halls of this monster.");
-            return;
+            else{
+                System.out.println("\nYou can't see here from there, and you soon find yourself trapped within the maze, another lost soul damned to wander in the halls of this monster.");
+                return;
+            }
         }
         if(r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
 
