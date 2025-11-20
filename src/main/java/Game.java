@@ -9,15 +9,16 @@ public class Game {
 
         System.out.println("Enter name.");
         String charName = scanner.nextLine();
-        System.out.println("Enter side gig.");
-        String gigName = scanner.nextLine();
-        System.out.println("Enter background.");
-        String bgName = scanner.nextLine();
 
         System.out.println("Character Name: " + charName);
-        System.out.println("Side Gig: " + gigName);
-        System.out.println("Background: " + bgName);
-        StatTool myStats = new StatTool(charName,gigName,bgName);
+        StatTool myStats = new StatTool(charName);
+
+        printDramaticText("Sharp: Your ability to notice small details and have quick reflexes.");
+        printDramaticText("Sturdy: Your ability to continue to stand strong against the harshest of blows.");
+        printDramaticText("Slick: Your ability to charm your way through the world.");
+        printDramaticText("Severe: Your ability to bite back and make it hurt.");
+        printDramaticText("Skilled: Your ability to use the knowledge you've learned throughout life.");
+        printDramaticText("Soul: Your ability to believe in the unknown and put your trust in what's not visible.");
 
         myStats.printSheetWithAllowance();
 
@@ -69,26 +70,38 @@ public class Game {
         printDramaticText("As you enter, you can feel that something's horribly wrong here...");
         // encounterRoll();
 
-        generateEncounter();
+        generateEncounter(myStats);
+    }
         // TODO Continue ...
     
         
-    public static void generateEncounter() {
-        int r = (int)(Math.random() * 20) + 1;
-        if(r == 1 || r == 2 || r == 3 || r == 4) {
+    public static void generateEncounter(StatTool myStats) {
+        int r = (int)(Math.random() * 5) + 1;
+        if(r == 1 || r == 2 || r == 3 || r == 4 || r == 5) {
 
-            System.out.println("");
+            printDramaticText("You can't find any windows or doors in here. It's just an endless maze of brick walls and concrete. Regardless, you try and push onward.");
 
-            RollResult rr = myStats.diceCheck("slick");
+            RollResult rr = myStats.diceCheck("sturdy");
             rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("Despite the warehouse itself seeming to be against you, you manage to press onward.");
+            }
+            System.out.println("You can't see here from there, and you soon find yourself trapped within the maze, another lost soul damned to wander in the halls of this monster.");
+            return;
         }
-        if(r == 5 || r == 6 || r == 7 || r == 8) {
-            String mask = Character.toString(0x1F3AD);
-            System.out.println("++++++++++ " + mask + " DISGUISED MIMIC " + mask + " +++++++++");
-            System.out.println("+                                        +");
-            System.out.println("+           roll required:  12           +");
-            System.out.println("+                                        +");
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+        if(r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
+
+            printDramaticText("You can't find any windows or doors in here. It's just an endless maze of brick walls and concrete. Regardless, you try and push onward.");
+
+            RollResult rr = myStats.diceCheck("sturdy");
+            rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("Despite the warehouse itself seeming to be against you, you manage to press onward.");
+            }
+            System.out.println("You can't see here from there, and you soon find yourself trapped within the maze, another lost soul damned to wander in the halls of this monster.");
+            return;
         }
         if(r == 9 || r == 10 || r == 11 || r == 12) {
             String eye = Character.toString(0x1F441);

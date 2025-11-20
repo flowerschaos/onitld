@@ -8,8 +8,6 @@ public class StatTool {
         public int soul = 4;
 
         public String name;
-        public String sideGig;
-        public String bg;
 
         public int temp;
 
@@ -24,14 +22,12 @@ public class StatTool {
         }
 
 
-        public StatTool(String name, String sideGig, String bg) {
+        public StatTool(String name) {
                 this.name = name;
-                this.sideGig = sideGig;
-                this.bg = bg;
         }
 
         public void printSheet(){
-                System.out.println(this.name+", "+this.bg+" "+this.sideGig);
+                System.out.println(this.name);
                 System.out.println("==========================");
                 System.out.println("Sharp // " + this.sharp);
                 System.out.println("Sturdy // " + this.sturdy);
@@ -41,7 +37,7 @@ public class StatTool {
                 System.out.println("Soul // " + this.soul);
         }
         public void printSheetWithAllowance(){
-                System.out.println(this.name+", "+this.bg+" "+this.sideGig);
+                System.out.println(this.name);
                 System.out.println("==========================");
                 System.out.println("Sharp // " + this.sharp);
                 System.out.println("Sturdy // " + this.sturdy);

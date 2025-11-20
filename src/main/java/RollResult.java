@@ -1,20 +1,20 @@
 public class RollResult {
 
-    public boolean success;
+    public boolean checkResult;
     public int failed;
     public int[] rolls;
     public String rolledStat;
 
-    public RollResult(String rolledStat, int failed, int[] rolls, boolean success) {
+    public RollResult(String rolledStat, int failed, int[] rolls, boolean checkResult) {
         this.failed = failed;
         this.rolls = rolls;
-        this.success = success;
+        this.checkResult = checkResult;
         this.rolledStat = rolledStat;
     }
 
     public void print() {
         System.out.println("aptitudetest."+rolledStat+".exe loaded.");
-        if(this.success) {
+        if(this.checkResult) {
             System.out.println("Check cleared. Congratulations.");
         } else {
             System.out.println("Check missed. Good luck.");
