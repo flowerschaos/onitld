@@ -69,11 +69,37 @@ public class Game {
         printDramaticText("As you enter, you can feel that something's horribly wrong here...");
         // encounterRoll();
 
-        RollResult rr = myStats.diceCheck("slick");
-        rr.print();
+        generateEncounter();
         // TODO Continue ...
-    }
+    
         
+    public static void generateEncounter() {
+        int r = (int)(Math.random() * 20) + 1;
+        if(r == 1 || r == 2 || r == 3 || r == 4) {
+
+            System.out.println("");
+
+            RollResult rr = myStats.diceCheck("slick");
+            rr.print();
+        }
+        if(r == 5 || r == 6 || r == 7 || r == 8) {
+            String mask = Character.toString(0x1F3AD);
+            System.out.println("++++++++++ " + mask + " DISGUISED MIMIC " + mask + " +++++++++");
+            System.out.println("+                                        +");
+            System.out.println("+           roll required:  12           +");
+            System.out.println("+                                        +");
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+        }
+        if(r == 9 || r == 10 || r == 11 || r == 12) {
+            String eye = Character.toString(0x1F441);
+            System.out.println("+++++++++++ " + eye +  " EVIL BEHOLDER " + eye + " ++++++++++++");
+            System.out.println("+                                        +");
+            System.out.println("+           roll required:  18           +");
+            System.out.println("+                                        +");
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+        }
+    }
+
     public static void printDramaticText(String text) {
         // Delay in milliseconds
         int delay = 100;
@@ -89,44 +115,6 @@ public class Game {
         }
         System.out.println();
     }
-    
-    public static void encounterRoll(){
-        int rng = (int)(Math.random() * 2) + 1;
-        System.out.println(rng);
-    }
-    // Draws a monster and returns an int which represents the difficulty of roll required.
-    public static int generateMonster() {
-        int r = (int)(Math.random() * 6) + 1;
-        if(r == 1 || r == 2 || r == 3) {
-            String zombie = Character.toString(0x1F9DF);
-            System.out.println("++++++++ " + zombie + " A HORDE OF ZOMBIES " + zombie + " ++++++++");
-            System.out.println("+                                        +");
-            System.out.println("+           roll required:  8            +");
-            System.out.println("+                                        +");
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++");
 
-            return 8;
-        }
-        if(r == 4 || r == 5) {
-            String mask = Character.toString(0x1F3AD);
-            System.out.println("++++++++++ " + mask + " DISGUISED MIMIC " + mask + " +++++++++");
-            System.out.println("+                                        +");
-            System.out.println("+           roll required:  12           +");
-            System.out.println("+                                        +");
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++");
-
-            return 12;
-        }
-        if(r == 6) {
-            String eye = Character.toString(0x1F441);
-            System.out.println("+++++++++++ " + eye +  " EVIL BEHOLDER " + eye + " ++++++++++++");
-            System.out.println("+                                        +");
-            System.out.println("+           roll required:  18           +");
-            System.out.println("+                                        +");
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++");
-
-            return 18;
-        }
-        return -1;
-    } 
+    // Draws a monster and returns an int which represents the difficulty of roll required. 
 }
