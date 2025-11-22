@@ -53,9 +53,9 @@ public class Game{
         }
         
         // is combs here? if she isn't, use the regular set of encounters. if she is, use the combs-aided encounter set.
-        boolean combsCheck = false
+        boolean combsCheck = false;
         // have you made it past The Gauntlet?
-        boolean gauntletPassed = false
+        boolean gauntletPassed = false;
         // Teehee.
         printDramaticText("BEGIN WAKEUP PROTOCOL...");
         printDramaticText("///////////////////////////////////");
@@ -73,44 +73,46 @@ public class Game{
         printDramaticText("As you enter, you can feel that something's horribly wrong here...");
         printDramaticText("                                  ");
 
-        generateEncounter(myStats);
-        generateEncounter(myStats);
+        generateEncounter(myStats, combsCheck, gauntletPassed);
+        generateEncounter(myStats, combsCheck, gauntletPassed);
+
 
         printDramaticText("You struggle through the nonsensical architecture and the visceral creations of the warehouse, leading you to a small cafeteria.");
         printDramaticText("Your tracker beeps frantically as you walk by a specific table in the cafeteria.");
-        printDramaticText("From underneath the table crawls out...");
+        printDramaticText("From underneath the table crawls out...");;
         printDramaticText("An anthropomorphic moth-based child, who looks to be around the age of six or seven years old. You've heard tales of citizens coming from a lineage of those afflicted by radiation: harpies, squidpeople, allegedly people with ties to gods, but... here's one. In the flesh.");
         printDramaticText("She wears a navy blue poncho, a bracelet with flashing light on one of her four arms. Staring at you with some kind of wonder, yet palpable fear, she notes your tracker and rushes forth to... hug you.");
         printDramaticText("Her voice is timid and quiet, like somebody who's not quite used to speaking yet.");
-        printDramaticText("\"Are.. Are you "+charName+"? Did Mr. Miles send... send you to get me?\"")
-        printDramaticText("You nod, holstering your weapon.")
-        printDramaticText("\"Hi. M-My name is... is Combs. Nice... to meet... you.\"")
-        printDramaticText("She trembles with fear, yet if it's from your appearance or from the whole appearance of the place, you're unsure. Regardless, she holds out her hand for you to take it.")
-        printDramaticText("It's time to get out of here.")
-        combsCheck = true
+        printDramaticText("\"Are.. Are you "+charName+"? Did Mr. Miles send... send you to get me?\"");
+        printDramaticText("You nod, holstering your weapon.");
+        printDramaticText("\"Hi. M-My name is... is Combs. Nice... to meet... you.\"");
+        printDramaticText("She trembles with fear, yet if it's from your appearance or from the whole appearance of the place, you're unsure. Regardless, she holds out her hand for you to take it.");
+        printDramaticText("It's time to get out of here.");
+        combsCheck = true;
 
-        generateEncounter(myStats);
-        generateEncounter(myStats);
+        generateEncounter(myStats, combsCheck, gauntletPassed);
+        generateEncounter(myStats, combsCheck, gauntletPassed);
 
-        printDramaticText("The two of you face the final barrier to cross. A door is in your way, but you don't know entirely how to open it. You put your faith in what's gotten you here, and, gently yet firmly holding the child's hand, walk forwards.")
-        gauntletPassed = true
 
-        generateEncounter(myStats);
+        printDramaticText("The two of you face the final barrier to cross. A door is in your way, but you don't know entirely how to open it. You put your faith in what's gotten you here, and, gently yet firmly holding the child's hand, walk forwards.");
+        gauntletPassed = true;
 
-        
+        generateEncounter(myStats, combsCheck, gauntletPassed);
+
     }
 
-public static void generateEncounter(StatTool myStats) {
+public static void generateEncounter(StatTool myStats, boolean combsCheck, boolean gauntletPassed) {
     // random number for generation of encounters
     int r = (int)(Math.random() * 30) + 1;
     // did the user pass the gauntlet? bring in the door
     if (gauntletPassed) {
         // keep trying until the door opens.
-        boolean doorCheck = false while (!doorCheck) {
+        boolean doorCheck = false;
+         while (!doorCheck) {
             RollResult rr = myStats.diceCheck("soul");
             rr.print();
             if (rr.checkResult) {
-                doorCheck = true
+                doorCheck = true;
                 System.out.println("\nWhen you open your eyes, you stand infront of an empty lot. The warehouse was never really there, was it?");
             } else {
                 System.out.println("\nYou smash your face into the closed door. You have to try again, you're this close to freedom.");
