@@ -11,6 +11,7 @@ public class Game{
         String charName = scanner.nextLine();
         StatTool myStats = new StatTool(charName);
 
+        // explanation of the stats and what they're generally used for
         printDramaticText("Sharp: Your ability to notice small details and have quick reflexes.");
         printDramaticText("Sturdy: Your ability to continue to stand strong against the harshest of blows.");
         printDramaticText("Slick: Your ability to charm your way through the world.");
@@ -26,12 +27,14 @@ public class Game{
         while (true) {
             command = scanner.nextLine();
 
+            // if told to finish, begin finalizing the character sheet.
             if (command.equalsIgnoreCase("finish")) {
                 System.out.println("Finalizing character sheet...");
                 myStats.printSheet();
                 break;
             }
-
+            
+            // the user should only be using "higher" or "lower" in conjunction with a stat name
             String commandChunks[] = command.split("\\s+");
             if (commandChunks.length == 2) {
                 String stat = commandChunks[0].toLowerCase();
@@ -48,8 +51,12 @@ public class Game{
                 System.out.println("Unclear command. Enter '[stat name]' '[higher/lower]' (ex: sharp lower, slick higher) to adjust ratings, or enter 'finish' to finalize your character sheet.");
             }
         }
-
-        // Start the adventure.
+        
+        // is combs here? if she isn't, use the regular set of encounters. if she is, use the combs-aided encounter set.
+        boolean combsCheck = false
+        // have you made it past The Gauntlet?
+        boolean gauntletPassed = false
+        // Teehee.
         printDramaticText("BEGIN WAKEUP PROTOCOL...");
         printDramaticText("///////////////////////////////////");
         printDramaticText("The endless torrent of snow smothers the crowded street. The only thing clear to see is the holographic advertisements in the distance.");
@@ -80,11 +87,121 @@ public class Game{
         printDramaticText("\"Hi. M-My name is... is Combs. Nice... to meet... you.\"")
         printDramaticText("She trembles with fear, yet if it's from your appearance or from the whole appearance of the place, you're unsure. Regardless, she holds out her hand for you to take it.")
         printDramaticText("It's time to get out of here.")
-        
+        combsCheck = true
+
+        generateEncounter(myStats);
+        generateEncounter(myStats);
+
+        printDramaticText("The two of you face the final barrier to cross. A door is in your way, but you don't know entirely how to open it. You put your faith in what's gotten you here, and, gently yet firmly holding the child's hand, walk forwards.")
+        gauntletPassed = true
     }
 
-    public static void generateEncounter(StatTool myStats, boolean combsCheck) {
+    public static void generateEncounter(StatTool myStats) {
         int r = (int)(Math.random() * 30) + 1;
+        if (gauntletPassed){
+            RollResult rr = myStats.diceCheck("soul");
+            rr.print();
+            if (rr.checkResult){
+                System.out.println("\nWhen you open your eyes, you stand infront of an empty lot. The warehouse was never really there, was it?");
+            }
+            else{
+                System.out.println("\nYou smash your face into the closed door. You have to try again, you're this close to freedom.");
+                return;
+            }
+        }
+        if (combsCheck){
+        if(r == 1 || r == 2 || r == 3 || r == 4 || r == 5) {
+
+            printDramaticText("\nA meat monster rushes towards you, trying to attack Combs!");
+
+            RollResult rr = myStats.diceCheck("sturdy");
+            rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("\nYou're able to not only dodge the oncoming attack, but dispatch the meat creature swiftly and efficiently. Combs cheers you on.");
+            }
+            else{
+                System.out.println("\nYou take the brunt of the attack, falling to your knees, no longer able to fight.");
+                return;
+            }
+        }
+        if(r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
+
+            printDramaticText("\nThe geometry of the building itself becomes hostile, trying to separate you and your client.");
+
+            RollResult rr = myStats.diceCheck("severe");
+            rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("\nYou smash through a wall, able to keep the young girl safe and sound in your care.");
+            }
+            else{
+            System.out.println("\nYou're boxed in, disected by concrete and steel supports.");
+            return;
+            }
+        }
+        if(r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
+
+            printDramaticText("\nThere seems to be a shortcut in the distance. You begin to try and navigate...");
+
+            RollResult rr = myStats.diceCheck("sharp");
+            rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("\nThe warehouse facade is starting to falter. You can see through the cracks and peer at the beating heart of the phenomenon.");
+            }
+            else{
+                System.out.println("\nIt's a trap! You become enveloped by tangling tendons and contracting muscles.");
+                return;
+            }
+        }
+        if(r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
+
+            printDramaticText("\nThere seems to be a dead end.");
+
+            RollResult rr = myStats.diceCheck("skilled");
+            rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("\nThere's a false wall in here. You and Combs crawl through to the other side.");
+            }
+            else{
+            System.out.println("\nSomething comes out of a false wall, catching you offguard and attacking you.");
+            return;
+            }
+        }
+        if(r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
+
+            printDramaticText("\nYou find somebody else wandering. They seem terrified, pointing their weapon towards you.");
+
+            RollResult rr = myStats.diceCheck("slick");
+            rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("\nUsing Combs as a bargaining chip (which you feel only slightly bad about), you're able to convince them that you mean no harm.");
+            }
+            else{
+                System.out.println("\nThe person takes Combs, whisking her away, never to be seen again.");
+                return;
+            }
+        }
+        if(r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
+
+            printDramaticText("\nYou're beginning to lose hope that you can find your way out of here.");
+
+            RollResult rr = myStats.diceCheck("soul");
+            rr.print();
+            
+            if (rr.checkResult){
+                System.out.println("\nYou have somebody to save. Just a little further.");
+            }
+            else{
+            System.out.println("\nYou become consumed by despair, unable to move yourself forward.");
+            return;
+            }
+        }
+        }
+        else{
         if(r == 1 || r == 2 || r == 3 || r == 4 || r == 5) {
 
             printDramaticText("\nYou can't find any windows or doors in here. It's just an endless maze of brick walls and concrete. Regardless, you try and push onward.");
@@ -176,6 +293,7 @@ public class Game{
             }
         }
     }
+    }
 
     public static void printDramaticText(String text) {
         // Delay in milliseconds
@@ -192,6 +310,4 @@ public class Game{
         }
         System.out.println();
     }
-
-    // Draws a monster and returns an int which represents the difficulty of roll required. 
 }
