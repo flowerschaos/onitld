@@ -94,207 +94,166 @@ public class Game{
 
         printDramaticText("The two of you face the final barrier to cross. A door is in your way, but you don't know entirely how to open it. You put your faith in what's gotten you here, and, gently yet firmly holding the child's hand, walk forwards.")
         gauntletPassed = true
+
+        generateEncounter(myStats);
+
+        
     }
 
-    public static void generateEncounter(StatTool myStats) {
-        int r = (int)(Math.random() * 30) + 1;
-        if (gauntletPassed){
+public static void generateEncounter(StatTool myStats) {
+    // random number for generation of encounters
+    int r = (int)(Math.random() * 30) + 1;
+    // did the user pass the gauntlet? bring in the door
+    if (gauntletPassed) {
+        // keep trying until the door opens.
+        boolean doorCheck = false while (!doorCheck) {
             RollResult rr = myStats.diceCheck("soul");
             rr.print();
-            if (rr.checkResult){
+            if (rr.checkResult) {
+                doorCheck = true
                 System.out.println("\nWhen you open your eyes, you stand infront of an empty lot. The warehouse was never really there, was it?");
-            }
-            else{
+            } else {
                 System.out.println("\nYou smash your face into the closed door. You have to try again, you're this close to freedom.");
-                return;
             }
         }
-        if (combsCheck){
-        if(r == 1 || r == 2 || r == 3 || r == 4 || r == 5) {
-
+    }
+    // is combs with you? bring in the alternate encounters!
+    if (combsCheck) {
+        if (r == 1 || r == 2 || r == 3 || r == 4 || r == 5) {
             printDramaticText("\nA meat monster rushes towards you, trying to attack Combs!");
-
             RollResult rr = myStats.diceCheck("sturdy");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nYou're able to not only dodge the oncoming attack, but dispatch the meat creature swiftly and efficiently. Combs cheers you on.");
-            }
-            else{
+            } else {
                 System.out.println("\nYou take the brunt of the attack, falling to your knees, no longer able to fight.");
                 return;
             }
         }
-        if(r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
-
+        if (r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
             printDramaticText("\nThe geometry of the building itself becomes hostile, trying to separate you and your client.");
-
             RollResult rr = myStats.diceCheck("severe");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nYou smash through a wall, able to keep the young girl safe and sound in your care.");
-            }
-            else{
-            System.out.println("\nYou're boxed in, disected by concrete and steel supports.");
-            return;
+            } else {
+                System.out.println("\nYou're boxed in, disected by concrete and steel supports.");
+                return;
             }
         }
-        if(r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
-
+        if (r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
             printDramaticText("\nThere seems to be a shortcut in the distance. You begin to try and navigate...");
-
             RollResult rr = myStats.diceCheck("sharp");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nThe warehouse facade is starting to falter. You can see through the cracks and peer at the beating heart of the phenomenon.");
-            }
-            else{
+            } else {
                 System.out.println("\nIt's a trap! You become enveloped by tangling tendons and contracting muscles.");
                 return;
             }
         }
-        if(r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
-
+        if (r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
             printDramaticText("\nThere seems to be a dead end.");
-
             RollResult rr = myStats.diceCheck("skilled");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nThere's a false wall in here. You and Combs crawl through to the other side.");
-            }
-            else{
-            System.out.println("\nSomething comes out of a false wall, catching you offguard and attacking you.");
-            return;
+            } else {
+                System.out.println("\nSomething comes out of a false wall, catching you offguard and attacking you.");
+                return;
             }
         }
-        if(r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
-
+        if (r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
             printDramaticText("\nYou find somebody else wandering. They seem terrified, pointing their weapon towards you.");
-
             RollResult rr = myStats.diceCheck("slick");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nUsing Combs as a bargaining chip (which you feel only slightly bad about), you're able to convince them that you mean no harm.");
-            }
-            else{
+            } else {
                 System.out.println("\nThe person takes Combs, whisking her away, never to be seen again.");
                 return;
             }
         }
-        if(r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
-
+        if (r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
             printDramaticText("\nYou're beginning to lose hope that you can find your way out of here.");
-
             RollResult rr = myStats.diceCheck("soul");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nYou have somebody to save. Just a little further.");
-            }
-            else{
-            System.out.println("\nYou become consumed by despair, unable to move yourself forward.");
-            return;
+            } else {
+                System.out.println("\nYou become consumed by despair, unable to move yourself forward.");
+                return;
             }
         }
-        }
-        else{
-        if(r == 1 || r == 2 || r == 3 || r == 4 || r == 5) {
-
+    } else {
+        if (r == 1 || r == 2 || r == 3 || r == 4 || r == 5) {
             printDramaticText("\nYou can't find any windows or doors in here. It's just an endless maze of brick walls and concrete. Regardless, you try and push onward.");
-
             RollResult rr = myStats.diceCheck("sturdy");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nDespite the warehouse itself seeming to be against you, you manage to press onward.");
-            }
-            else{
+            } else {
                 System.out.println("\nYou can't see here from there, and you soon find yourself trapped within the maze, another lost soul damned to wander in the halls of this monster.");
                 return;
             }
         }
-        if(r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
-
+        if (r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
             printDramaticText("\nSome kind of terrible meat monster stands in your way. You prepare to strike...");
-
             RollResult rr = myStats.diceCheck("severe");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nIt falls with relative ease. You continue to move...");
-            }
-            else{
-            System.out.println("\nThe figure's too powerful for you, and you are quickly enveloped.");
-            return;
+            } else {
+                System.out.println("\nThe figure's too powerful for you, and you are quickly enveloped.");
+                return;
             }
         }
-        if(r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
-
+        if (r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
             printDramaticText("\nA meat monster blocks your path forward. It's too strong to fight, you have to outrun it!");
-
             RollResult rr = myStats.diceCheck("sharp");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nQuickly as you can, you route around the monster, running into the distance.");
-            }
-            else{
+            } else {
                 System.out.println("\nYou trip and fall, sinking into the floor of the warehouse, never to be seen again.");
                 return;
             }
         }
-        if(r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
-
+        if (r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
             printDramaticText("\nThe signs before you don't seem to make sense, pointing in directions that you can't reach.");
-
             RollResult rr = myStats.diceCheck("skilled");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nYou ignore the signs and continue to walk forward, knowing where you should go.");
-            }
-            else{
-            System.out.println("\nYou begin to follow the signs, forever lost, running in circles.");
-            return;
+            } else {
+                System.out.println("\nYou begin to follow the signs, forever lost, running in circles.");
+                return;
             }
         }
-        if(r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
-
+        if (r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
             printDramaticText("\nYou find somebody else wandering. They seem terrified, pointing their weapon towards you.");
-
             RollResult rr = myStats.diceCheck("slick");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nWith ease, you convince them that you mean no harm.");
-            }
-            else{
+            } else {
                 System.out.println("\nYour talking makes them only angrier, and your exploration is brought to an abrupt end.");
                 return;
             }
         }
-        if(r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
-
+        if (r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
             printDramaticText("\nEverywhere you turn, you end up at a dead end.");
-
             RollResult rr = myStats.diceCheck("soul");
             rr.print();
-            
-            if (rr.checkResult){
+            if (rr.checkResult) {
                 System.out.println("\nShutting your eyes and continuing to walk, you're able to move forward.");
-            }
-            else{
-            System.out.println("\nYou sit down, allowing your fate to consume you.");
-            return;
+            } else {
+                System.out.println("\nYou sit down, allowing your fate to consume you.");
+                return;
             }
         }
     }
-    }
-
+}
     public static void printDramaticText(String text) {
         // Delay in milliseconds
         int delay = 100;
