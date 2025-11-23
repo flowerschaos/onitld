@@ -1,11 +1,11 @@
 public class StatTool {
         //stats
-        public int sharp = 4;
-        public int sturdy = 4;
-        public int slick = 4;
-        public int severe = 4;
-        public int skilled = 4;
-        public int soul = 4;
+        public int sharp = 9;
+        public int sturdy = 9;
+        public int slick = 9;
+        public int severe = 9;
+        public int skilled = 9;
+        public int soul = 9;
 
         public String name;
 

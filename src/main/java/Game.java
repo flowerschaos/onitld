@@ -94,11 +94,18 @@ public class Game{
         generateEncounter(myStats, combsCheck, gauntletPassed);
 
 
-        printDramaticText("The two of you face the final barrier to cross. A door is in your way, but you don't know entirely how to open it. You put your faith in what's gotten you here, and, gently yet firmly holding the child's hand, walk forwards.");
+        printDramaticText("\nThe two of you face the final barrier to cross. A door is in your way, but you don't know entirely how to open it. You put your faith in what's gotten you here, and, gently yet firmly holding the child's hand, walk forwards.");
         gauntletPassed = true;
 
         generateEncounter(myStats, combsCheck, gauntletPassed);
 
+        printDramaticText("                                  ");
+        printDramaticText("Miles rushes forward, thanking you profusely for your hard work, trading the moth child (who is hugging him very tightly) for hard cold cash.");
+        printDramaticText("... This is double the listed payment. You assume it was intentional.");
+        printDramaticText("                                  ");
+        printDramaticText("░░░░▒█░▒█▀▀▀█░▒█▀▀▄░░░▒█▀▀▄░▒█▀▀▀█░▒█▄░▒█░▒█▀▀▀░█");
+        printDramaticText("░░░░▒█░▒█░░▒█░▒█▀▀▄░░░▒█░▒█░▒█░░▒█░▒█▒█▒█░▒█▀▀▀░▀");
+        printDramaticText("░▒█▄▄█░▒█▄▄▄█░▒█▄▄█░░░▒█▄▄█░▒█▄▄▄█░▒█░░▀█░▒█▄▄▄░▄");
     }
 
 public static void faintCourage(){
@@ -128,6 +135,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 doorCheck = true;
                 System.out.println("\nWhen you open your eyes, you stand infront of an empty lot. The warehouse was never really there, was it?");
+                return;
             } else {
                 System.out.println("\nYou smash your face into the closed door. You have to try again, you're this close to freedom.");
             }
