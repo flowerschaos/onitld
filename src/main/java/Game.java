@@ -117,14 +117,14 @@ public static void faintCourage(){
     printDramaticText("░▒█░░░░▒█▄▄█▒█░▒█░░▒█░░░▒█▄▄█░▄█▄░▒█░░▀█░▒█▄▄▄░▒█▄▄█░▀▀");
     System.out.println("");
     System.out.println("");
-    printDramaticText("You have failed, but failure is never for long...");
+    printDramaticText("You have failed, but failure's a temporary setback.");
     printDramaticText("Stop the program (hit the x at the top right of the window reading \"terminal\") and restart (the play button at the top right of the screen) to try again.");
     System.exit(0);
 }
 
 public static void generateEncounter(StatTool myStats, boolean combsCheck, boolean gauntletPassed) {
     // random number for generation of encounters
-    int r = (int)(Math.random() * 5) + 1;
+    int r = (int)(Math.random() * 30) + 1;
     // did the user pass the gauntlet? bring in the door
     if (gauntletPassed) {
         // keep trying until the door opens.
