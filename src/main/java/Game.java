@@ -109,7 +109,7 @@ public class Game{
     }
 
 public static void faintCourage(){
-    for (int i= 0; i < 20; i++) {
+    for (int i= 0; i < 10; i++) {
     System.out.println("");
     }
     printDramaticText("░▒█▀▀▀░▒█░░░░█▀▀▄░▀▀█▀▀░▒█░░░░▀█▀░▒█▄░▒█░▒█▀▀▀░▒█▀▀▄░░░");
@@ -151,7 +151,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nYou're able to not only dodge the oncoming attack, but dispatch the meat creature swiftly and efficiently. Combs cheers you on.");
             } else {
                 System.out.println("\nYou take the brunt of the attack, falling to your knees, no longer able to fight.");
-                return;
+                faintCourage();
             }
         }
         if (r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
@@ -162,7 +162,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nYou smash through a wall, able to keep the young girl safe and sound in your care.");
             } else {
                 System.out.println("\nYou're boxed in, disected by concrete and steel supports.");
-                return;
+                faintCourage();
             }
         }
         if (r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
@@ -173,7 +173,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nThe warehouse facade is starting to falter. You can see through the cracks and peer at the beating heart of the phenomenon.");
             } else {
                 System.out.println("\nIt's a trap! You become enveloped by tangling tendons and contracting muscles.");
-                return;
+                faintCourage();
             }
         }
         if (r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
@@ -184,7 +184,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nThere's a false wall in here. You and Combs crawl through to the other side.");
             } else {
                 System.out.println("\nSomething comes out of a false wall, catching you offguard and attacking you.");
-                return;
+                faintCourage();
             }
         }
         if (r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
@@ -195,7 +195,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nUsing Combs as a bargaining chip (which you feel only slightly bad about), you're able to convince them that you mean no harm.");
             } else {
                 System.out.println("\nThe person takes Combs, whisking her away, never to be seen again.");
-                return;
+                faintCourage();
             }
         }
         if (r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
@@ -206,7 +206,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nYou have somebody to save. Just a little further.");
             } else {
                 System.out.println("\nYou become consumed by despair, unable to move yourself forward.");
-                return;
+                faintCourage();
             }
         }
     } else {
@@ -229,7 +229,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nIt falls with relative ease. You continue to move...");
             } else {
                 System.out.println("\nThe figure's too powerful for you, and you are quickly enveloped.");
-                return;
+                faintCourage();
             }
         }
         if (r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
@@ -240,7 +240,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nQuickly as you can, you route around the monster, running into the distance.");
             } else {
                 System.out.println("\nYou trip and fall, sinking into the floor of the warehouse, never to be seen again.");
-                return;
+                faintCourage();
             }
         }
         if (r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
@@ -251,7 +251,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nYou ignore the signs and continue to walk forward, knowing where you should go.");
             } else {
                 System.out.println("\nYou begin to follow the signs, forever lost, running in circles.");
-                return;
+                faintCourage();
             }
         }
         if (r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
@@ -262,7 +262,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nWith ease, you convince them that you mean no harm.");
             } else {
                 System.out.println("\nYour talking makes them only angrier, and your exploration is brought to an abrupt end.");
-                return;
+                faintCourage();
             }
         }
         if (r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
@@ -273,7 +273,7 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
                 System.out.println("\nShutting your eyes and continuing to walk, you're able to move forward.");
             } else {
                 System.out.println("\nYou sit down, allowing your fate to consume you.");
-                return;
+                faintCourage();
             }
         }
     }
