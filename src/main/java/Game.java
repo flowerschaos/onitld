@@ -66,11 +66,12 @@ public class Game{
         printDramaticText("In the seat next to you, a rough man-shaped figure sits down, and turns to meet you.");
         printDramaticText("He's on the taller end, with patchy stubble and wireframe glasses. His eyes are ice blue, and his hair's a murky brown. Speaking of his hair, it\'s in a very... interesting mullet.");
         printDramaticText("He clearly hasn't been sleeping well.");
-        printDramaticText("\"Sorry I'm late, "+charName+". The name's Miles, I'm your... client.\"");
+        printDramaticText("\"Sorry I'm late, "+charName+". I suppose I should... formally introduce myself. My name is Miles, and I'm your... client.\"");
+        printDramaticText("He takes a deep breath, taking something out of one of the pockets of his parka.");
         printDramaticText("\"To find what I'm looking for, you're.. going to need this.\"");
         printDramaticText("He hands you a small phone-sized device. On it is a dot representing you, outlines of the buildings surrounding you, and an arrow at the top of the screen. The arrow has a label: \"2M NORTH\".");
         printDramaticText("As you rise, Miles salutes.");
-        printDramaticText("\"Good luck! You're gonna need it.\"");
+        printDramaticText("\"Good luck. You're gonna need it.\"");
         printDramaticText("                                  ");
         printDramaticText("You make it to the location... a derelict warehouse?");
         printDramaticText("As you enter, you can feel that something's horribly wrong here...");
@@ -79,12 +80,13 @@ public class Game{
         generateEncounter(myStats, combsCheck, gauntletPassed, myStats.health);
         generateEncounter(myStats, combsCheck, gauntletPassed, myStats.health);
 
-
         printDramaticText("You struggle through the nonsensical architecture and the visceral creations of the warehouse, leading you to a small cafeteria.");
         printDramaticText("Your tracker beeps frantically as you walk by a specific table in the cafeteria.");
         printDramaticText("From underneath the table crawls out...");;
-        printDramaticText("An anthropomorphic moth-based child, who looks to be around the age of six or seven years old. You've heard tales of citizens coming from a lineage of those afflicted by radiation: harpies, squidpeople, allegedly people with ties to gods, but... here's one. In the flesh.");
-        printDramaticText("She wears a navy blue poncho, a bracelet with flashing light on one of her four arms. Staring at you with some kind of wonder, yet palpable fear, she notes your tracker and rushes forth to... hug you.");
+        printDramaticText("An anthropomorphic moth-based child. She looks to be around the age of six or seven years old.");
+        printDramaticText("You've heard tales of citizens coming from a lineage of those afflicted by radiation: harpies, squidpeople, even, allegedly, people with divine powers, but... here's one. In the flesh.");
+        printDramaticText("She wears a navy blue poncho, and, notably, a bracelet, light flashing white, is wrapped around her upper left arm.");
+        printDramaticText("Her lower arms are in her pockets and her upper left arm is nervously flexing. Staring at you with some kind of wonder, yet palpable fear, she notes your tracker and rushes forth to... hug you?");
         printDramaticText("Her voice is timid and quiet, like somebody who's not quite used to speaking yet.");
         printDramaticText("\"Are.. Are you "+charName+"? Did Mr. Miles send... send you to get me?\"");
         printDramaticText("You nod, holstering your weapon.");
