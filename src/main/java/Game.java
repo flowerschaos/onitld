@@ -13,7 +13,7 @@ public class Game{
 
         // explanation of the stats and what they're generally used for
         printDramaticText("Sharp: Your ability to notice small details and have quick reflexes.");
-        printDramaticText("Sturdy: Your ability to continue to stand strong against the harshest of blows.");
+        printDramaticText("Sturdy: Your ability to continue to stand strong against the harshest of blows. Determines how many hits you can take before you collapse.");
         printDramaticText("Slick: Your ability to charm your way through the world.");
         printDramaticText("Severe: Your ability to bite back and make it hurt.");
         printDramaticText("Skilled: Your ability to use the knowledge you've learned throughout life.");
@@ -56,13 +56,16 @@ public class Game{
         boolean combsCheck = false;
         // have you made it past The Gauntlet?
         boolean gauntletPassed = false;
+
         // Teehee.
         printDramaticText("BEGIN WAKEUP PROTOCOL...");
         printDramaticText("///////////////////////////////////");
         printDramaticText("The endless torrent of snow smothers the crowded street. The only thing clear to see is the holographic advertisements in the distance.");
         printDramaticText("You sit at a street market stall, eating cheap noodles. Needless to say, you desperately need this job. There are a thousand things that could go wrong here, yes, but you're desperate to make rent.");
         printDramaticText("                                  ");
-        printDramaticText("In the seat next to you, a rough man-shaped figure sits down, and turns to meet you. He's on the taller end, with patchy stubble and wireframe glasses. His eyes are ice blue, and his hair's a murky brown in a very bad mullet.");
+        printDramaticText("In the seat next to you, a rough man-shaped figure sits down, and turns to meet you.");
+        printDramaticText("He's on the taller end, with patchy stubble and wireframe glasses. His eyes are ice blue, and his hair's a murky brown. Speaking of his hair, it\'s in a very... interesting mullet.");
+        printDramaticText("He clearly hasn't been sleeping well.");
         printDramaticText("\"Sorry I'm late, "+charName+". The name's Miles, I'm your... client.\"");
         printDramaticText("\"To find what I'm looking for, you're.. going to need this.\"");
         printDramaticText("He hands you a small phone-sized device. On it is a dot representing you, outlines of the buildings surrounding you, and an arrow at the top of the screen. The arrow has a label: \"2M NORTH\".");
@@ -73,8 +76,8 @@ public class Game{
         printDramaticText("As you enter, you can feel that something's horribly wrong here...");
         printDramaticText("                                  ");
 
-        generateEncounter(myStats, combsCheck, gauntletPassed);
-        generateEncounter(myStats, combsCheck, gauntletPassed);
+        generateEncounter(myStats, combsCheck, gauntletPassed, myStats.health);
+        generateEncounter(myStats, combsCheck, gauntletPassed, myStats.health);
 
 
         printDramaticText("You struggle through the nonsensical architecture and the visceral creations of the warehouse, leading you to a small cafeteria.");
@@ -90,14 +93,14 @@ public class Game{
         printDramaticText("It's time to get out of here.");
         combsCheck = true;
 
-        generateEncounter(myStats, combsCheck, gauntletPassed);
-        generateEncounter(myStats, combsCheck, gauntletPassed);
+        generateEncounter(myStats, combsCheck, gauntletPassed, myStats.health);
+        generateEncounter(myStats, combsCheck, gauntletPassed, myStats.health);
 
 
         printDramaticText("\nThe two of you face the final barrier to cross. A door is in your way, but you don't know entirely how to open it. You put your faith in what's gotten you here, and, gently yet firmly holding the child's hand, walk forwards.");
         gauntletPassed = true;
 
-        generateEncounter(myStats, combsCheck, gauntletPassed);
+        generateEncounter(myStats, combsCheck, gauntletPassed, myStats.health);
 
         printDramaticText("                                  ");
         printDramaticText("Miles rushes forward, thanking you profusely for your hard work, trading the moth child (who is hugging him very tightly) for hard cold cash.");
@@ -122,7 +125,7 @@ public static void faintCourage(){
     System.exit(0);
 }
 
-public static void generateEncounter(StatTool myStats, boolean combsCheck, boolean gauntletPassed) {
+public static void generateEncounter(StatTool myStats, boolean combsCheck, boolean gauntletPassed, int health) {
     // random number for generation of encounters
     int r = (int)(Math.random() * 30) + 1;
     // did the user pass the gauntlet? bring in the door
@@ -149,9 +152,17 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             rr.print();
             if (rr.checkResult) {
                 System.out.println("\nYou're able to not only dodge the oncoming attack, but dispatch the meat creature swiftly and efficiently. Combs cheers you on.");
-            } else {
-                System.out.println("\nYou take the brunt of the attack, falling to your knees, no longer able to fight.");
-                faintCourage();
+            } 
+            else {
+                if (myStats.health == 0){
+                    System.out.println("\nYou take the brunt of the attack, falling to your knees, no longer able to fight.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nYou take on the blunt force of the attack. It hurts, and you can feel yourself become weaker, but now isn't the time to stop.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }  
             }
         }
         if (r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
@@ -161,8 +172,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nYou smash through a wall, able to keep the young girl safe and sound in your care.");
             } else {
-                System.out.println("\nYou're boxed in, disected by concrete and steel supports.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nYou're boxed in, disected by concrete and steel supports.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nYou're able to punch through the wall, but your legs give out once you get through.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
@@ -172,8 +190,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nThe warehouse facade is starting to falter. You can see through the cracks and peer at the beating heart of the phenomenon.");
             } else {
-                System.out.println("\nIt's a trap! You become enveloped by tangling tendons and contracting muscles.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nThe true nature of the building reveals itself, and you're constricted by contracting muscles.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nYou cut through tendon, muscle, and bone to the other side, but you are not unscathed.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
@@ -183,8 +208,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nThere's a false wall in here. You and Combs crawl through to the other side.");
             } else {
-                System.out.println("\nSomething comes out of a false wall, catching you offguard and attacking you.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nFrom what seems to be a false wall, something crawls out, dragging you away.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nThere's a false wall! Something begins to crawl out, but you're able to beat it back.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
@@ -194,8 +226,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nUsing Combs as a bargaining chip (which you feel only slightly bad about), you're able to convince them that you mean no harm.");
             } else {
-                System.out.println("\nThe person takes Combs, whisking her away, never to be seen again.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nYou quickly suffer a fatal wound, and you can merely watch as they drag Combs away.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nThey attack you, but it's not a fatal wound.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
@@ -205,8 +244,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nYou have somebody to save. Just a little further.");
             } else {
-                System.out.println("\nYou become consumed by despair, unable to move yourself forward.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nIt's too much to bear.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nYou have to get out of here. You're hurting, but this is going to end soon. You're going to make sure of it.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
     } else {
@@ -217,8 +263,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nDespite the warehouse itself seeming to be against you, you manage to press onward.");
             } else {
-                System.out.println("\nYou can't see here from there, and you soon find yourself trapped within the maze, another lost soul damned to wander in the halls of this monster.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nThe walls constrict, leaving you boxed in.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nYou slam into exposed rebar on your way through.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 6 || r == 7 || r == 8 || r == 9 || r == 10) {
@@ -226,10 +279,17 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             RollResult rr = myStats.diceCheck("severe");
             rr.print();
             if (rr.checkResult) {
-                System.out.println("\nIt falls with relative ease. You continue to move...");
+                System.out.println("\nIt falls with relative ease. You continue to move forward...");
             } else {
-                System.out.println("\nThe figure's too powerful for you, and you are quickly enveloped.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nIt's too strong for you to handle, and the scuffle quickly goes south.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nSomewhat disoriented, you're able to overpower the meat monster, but not without it getting a strike at you first.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 11 || r == 12 || r == 13 || r == 14 || r == 15) {
@@ -239,8 +299,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nQuickly as you can, you route around the monster, running into the distance.");
             } else {
-                System.out.println("\nYou trip and fall, sinking into the floor of the warehouse, never to be seen again.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nYou trip and fall, beginning to sink into the quicksand-like floor of the warehouse, never to be seen again.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nYou trip on what seems to be a tree trunk-sized artery on your way past, but are otherwise okay.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 16 || r == 17 || r == 18 || r == 19 || r == 20) {
@@ -250,8 +317,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nYou ignore the signs and continue to walk forward, knowing where you should go.");
             } else {
-                System.out.println("\nYou begin to follow the signs, forever lost, running in circles.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nYou become lost in the maze of misleading signs.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nYou go in circles for a bit, nearly walking into what looks like an open mouth, but are able to press onward.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 21 || r == 22 || r == 23 || r == 24 || r == 25) {
@@ -261,8 +335,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nWith ease, you convince them that you mean no harm.");
             } else {
-                System.out.println("\nYour talking makes them only angrier, and your exploration is brought to an abrupt end.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nYour attempts at conversation only make them angrier, and the small talk ends with your incredibly messy end.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nThey stab at you a little bit, but you're able to calm them down.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
         if (r == 26 || r == 27 || r == 28 || r == 29 || r == 30) {
@@ -272,8 +353,15 @@ public static void generateEncounter(StatTool myStats, boolean combsCheck, boole
             if (rr.checkResult) {
                 System.out.println("\nShutting your eyes and continuing to walk, you're able to move forward.");
             } else {
-                System.out.println("\nYou sit down, allowing your fate to consume you.");
-                faintCourage();
+                if (myStats.health == 0){
+                    System.out.println("\nYou sit down, allowing yourself to succumb.");
+                    faintCourage();
+                }
+                else {
+                    System.out.println("\nDespite hope feeling distant, you know there has to be some way out of here.");
+                    myStats.health--;
+                    System.out.println("\nRemaining health: "+myStats.health);
+                }
             }
         }
     }

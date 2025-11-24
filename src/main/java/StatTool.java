@@ -6,6 +6,7 @@ public class StatTool {
         public int severe = 4;
         public int skilled = 4;
         public int soul = 4;
+        public int health = sturdy;
 
         public String name;
 
